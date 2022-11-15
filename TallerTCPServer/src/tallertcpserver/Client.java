@@ -92,13 +92,18 @@ class Client implements Runnable {
         }
     }
     private boolean gano(){
-        if (puntaje1 == 15) {
-            return true;
+        if (parejas == null) {
+            
         } else {
-            if (puntaje2 == 15) {
-                return true;
-            }
         }
+        /*if (puntaje1 == 15) {
+        return true;
+        } else {
+        if (puntaje2 == 15) {
+        return true;
+        }
+        }
+        return false;*/
         return false;
     }
 
