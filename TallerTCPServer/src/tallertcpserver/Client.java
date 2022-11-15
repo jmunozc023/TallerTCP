@@ -26,7 +26,7 @@ class Client implements Runnable {
     private List<Client> jugadorList;
     private int puntaje1, puntaje2;
 
-    public Client(final Socket socket, String flag, String[][] parejas, List<Client> jugadorList) {
+    public Client(final Socket socket, final String flag, final String[][] parejas, List<Client> jugadorList) {
         this.socket = socket;
         this.flag = flag;
         this.parejas = parejas;
@@ -112,14 +112,22 @@ class Client implements Runnable {
 
     }
     public void imprimir(){
-        while (true) {            
-            leer();
+
+        for (var i : parejas) {
+            for (var j : i) {
+                System.out.print(j+"|");
+                
+            }
+            System.out.println("");
+            
         }
     }
 
     @Override
     public void run() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        while (true) {            
+            leer();
+        }
     }
 
 }

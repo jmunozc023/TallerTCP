@@ -14,7 +14,10 @@ public class TallerTCPServer {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        var server= new Server();
+        while (true)            
+            server.aceptarConexion();
+        
     }
     
 }

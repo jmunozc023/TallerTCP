@@ -14,7 +14,11 @@ public class TallerTCPClient {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        var client=new Client();
+        client.start();
+        while(true)
+            client.leer();
+            
     }
     
 }

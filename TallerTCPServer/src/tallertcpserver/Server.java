@@ -33,7 +33,22 @@ public class Server {
         jugadorList= new ArrayList<>();
         service= Executors.newCachedThreadPool();
         try {
-            socket= new ServerSocket(7900);
+            socket= new ServerSocket(7800);
+        } catch (IOException ex) {
+            Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public void aceptarConexion(){
+        try {
+            var client=socket.accept();
+            var flag= "jugador2";
+            if (first) {
+                flag="jugador1";
+                first=false;
+            }
+            var jugadorThread= new Client(client, flag, parejas, jugadorList);
+            jugadorList.add(jugadorThread);
+            service.submit(jugadorThread);
         } catch (IOException ex) {
             Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
         }
