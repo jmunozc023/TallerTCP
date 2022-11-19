@@ -22,12 +22,15 @@ public class Server {
     private List<Client> jugadorList;
     private ExecutorService service;
     private boolean first=true;
-    private String[][] parejas= new String [10][10];
+    private String[][] parejas= new String [4][4];
     
     public Server(){
-        for (var i = 0; i < 10; i++) {
-            for (var j = 0; j < 10; j++) {
-                parejas[i][j]= String.valueOf(Math.floor(Math.random() * 50 + 1));
+        for (var i = 0; i < parejas.length; i++) {
+            var random= String.valueOf(Math.floor(Math.random() * 1000 + 1));
+                    parejas[i][0]= random;
+            
+            for (var j = 0; j < parejas.length; j++) {
+                parejas[i][j]= random;
             } 
         }
         jugadorList= new ArrayList<>();

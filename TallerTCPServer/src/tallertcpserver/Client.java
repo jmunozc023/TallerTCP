@@ -76,8 +76,8 @@ class Client implements Runnable {
                     System.out.println("Pareja no disponible, intente de nuevo");
                 }
                 if (gano()) { //if dedidado a verificar si tenemos o no ganador
-                    jugadorList.get(0).escribir("Ganaste! "+flag);
-                    jugadorList.get(1).escribir("Ganaste! "+flag);
+                    jugadorList.get(0).escribir("Ganaste! " + flag);
+                    jugadorList.get(1).escribir("Ganaste! " + flag);
                 } else {
                     if (flag.equalsIgnoreCase("jugador1")) {
                         jugadorList.get(1).escribir("jugar");
@@ -91,19 +91,17 @@ class Client implements Runnable {
                 throw new AssertionError();
         }
     }
-    private boolean gano(){
-        if (parejas == null) {
-            
-        } else {
+
+    private boolean gano() {
+        for (var i : parejas) {
+            for (var j : i) {
+                if (parejas.equals(null)) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
         }
-        /*if (puntaje1 == 15) {
-        return true;
-        } else {
-        if (puntaje2 == 15) {
-        return true;
-        }
-        }
-        return false;*/
         return false;
     }
 
@@ -116,21 +114,22 @@ class Client implements Runnable {
         }
 
     }
-    public void imprimir(){
+
+    public void imprimir() {
 
         for (var i : parejas) {
             for (var j : i) {
-                System.out.print(j+"|");
-                
+                System.out.print(j + "|");
+
             }
             System.out.println("");
-            
+
         }
     }
 
     @Override
     public void run() {
-        while (true) {            
+        while (true) {
             leer();
         }
     }
