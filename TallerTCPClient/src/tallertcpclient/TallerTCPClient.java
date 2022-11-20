@@ -13,10 +13,10 @@ public class TallerTCPClient {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        var client=new Client();
-        client.start();
-        while(true)
+    public static void main(String[] args) { //Proyecto para Clientes de el juego de memoria
+        var client=new Client(); //Constructor de la clase Cliente
+        client.start(); //Inicializador de los hilos
+        while(true) //Ciclo while para mantener los hilos coriendo
             client.leer();
             
     }

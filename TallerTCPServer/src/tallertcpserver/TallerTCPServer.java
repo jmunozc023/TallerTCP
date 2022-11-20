@@ -14,8 +14,8 @@ public class TallerTCPServer {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        var server= new Server();
-        while (true)            
+        var server= new Server(); // Constructor de la clase Server
+        while (true) // Ciclo While que busca aceptar conexiones al servidor
             server.aceptarConexion();
         
     }

@@ -18,15 +18,15 @@ import javax.swing.JOptionPane;
  *
  * @author josep
  */
-public class Client extends Thread {
+public class Client extends Thread { //Clase de cliente que extiende los Hilos
 
-    private Socket socket;
-    private ObjectOutputStream out;
-    private ObjectInputStream in;
-    private String flag;
-    private boolean jugar = false;
+    private Socket socket; //Variable de socket de conexion de Cliente
+    private ObjectOutputStream out; //Variable para enviar objetos de conexion
+    private ObjectInputStream in; //Variable para recibir Objetos de conexion
+    private String flag; //Bandera para determinar el nombre del jugardor
+    private boolean jugar = false; //Variable Boolean para determinar el turno 
 
-    public Client() {
+    public Client() { //Genera la conexion entre el Servidor y el cliente
         try {
             socket = new Socket(InetAddress.getLocalHost(), 7800);
             out = new ObjectOutputStream(socket.getOutputStream());
@@ -38,7 +38,7 @@ public class Client extends Thread {
         }
     }
 
-    public void leer() {
+    public void leer() { //Metodo para leer los datos a enviar
         try {
             var data = in.readUTF();
             System.out.println(data);
@@ -48,7 +48,7 @@ public class Client extends Thread {
         }
     }
 
-    public void escribir() {
+    public void escribir() { //Metodo para enviar los datos al servidor, ademas de usar una ventana de dialogo para recibir los datos del usuario
         var data = JOptionPane.showInputDialog("Escoja una pareja usando las cordenadas (x1,y1,x2,y2)" + flag);
         var text = "jugar," + data;
         try {
@@ -60,7 +60,7 @@ public class Client extends Thread {
         }
     }
 
-    private void readString(final String data) {
+    private void readString(final String data) { //Metodo para determinar quien juega y si fue ganador
         var splitString = data.split(",");
         if (splitString[0].equals("flag")) {
             flag = splitString[1];
