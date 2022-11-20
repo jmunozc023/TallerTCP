@@ -22,11 +22,11 @@ public class Server {
     private List<Client> jugadorList; //Variable para la lista de los jugadores
     private ExecutorService service; // Variable para inicializar y manejar los hilos
     private boolean first=true; //Variable booleana para determinar quien es el primer jugador
-    private String[][] parejas= new String [2][2]; // Matriz para el juego de parejas
+    private String[][] parejas= new String [10][10]; // Matriz para el juego de parejas
     
     public Server(){ //Metodo para rellenar la matriz del juego con numeros aleatorios repetidos
         for (var i = 0; i < parejas.length; i++) {
-            var random= String.valueOf(Math.floor(Math.random() * 1000 + 1));
+            var random= String.valueOf(Math.floor(Math.random() * 50 + 1));
                     parejas[i][0]= random;
             
             for (var j = 0; j < parejas.length; j++) {

@@ -76,8 +76,23 @@ class Client implements Runnable { //Clase para crear las funciones de los hilos
                     System.out.println("Pareja no disponible, intente de nuevo");
                 }
                 if (gano()) { //if dedidado a verificar si tenemos o no ganador
-                    jugadorList.get(0).escribir("Ganaste! " + flag);
-                    jugadorList.get(1).escribir("Ganaste! " + flag);
+                    
+                    if (puntaje1>puntaje2) {
+                        jugadorList.get(0).escribir("Ganaste! " + flag+" Puntaje final: " +puntaje1);
+                        jugadorList.get(1).escribir("Gano " + flag);
+                    } else if (puntaje2>puntaje1) {
+                        jugadorList.get(1).escribir("Ganaste! " + flag+" Puntaje final: "+puntaje2);
+                        jugadorList.get(0).escribir("Gano " + flag);
+                    } else {
+                        jugadorList.get(0).escribir("Empate " + flag+" Puntaje final: " +puntaje1);
+                        jugadorList.get(1).escribir("Empate " + flag+" Puntaje final: " +puntaje2);
+                    }
+ {
+                        
+                        
+                    }
+                    
+                    
                 } else {
                     if (flag.equalsIgnoreCase("jugador1")) {
                         jugadorList.get(1).escribir("jugar");
@@ -93,16 +108,16 @@ class Client implements Runnable { //Clase para crear las funciones de los hilos
     }
 
     private boolean gano() { //Metodo para determinar cuando se acaban las parejas en el campo de juego (matriz)
-        for (var i : parejas) {
-            for (var j : i) {
-                if (parejas.length==0) {
-                    return true;
-                } else {
+        
+        for (int i = 0; i < parejas.length; i++) {
+            for (int j = 0; j < parejas[i].length; j++) {
+                if (parejas[i][j]!=null) {
                     return false;
                 }
             }
+            
         }
-        return false;
+        return true;
     }
 
     public void escribir(String data) { //Metodo para escribir los datos recibidos del cliente
